@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Technical events</title>
+</head>
+<style>
+	/* Style the tab buttons */
+.tablink {
+  background-color: #555;
+  color: white;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  font-size: 17px;
+  width: 20%;
+}
+
+/* Change background color of buttons on hover */
+.tablink:hover {
+  background-color: #777;
+}
+
+/* Set default styles for tab content */
+.tabcontent {
+  color: white;
+  display: none;
+  padding: 50px;
+  text-align: center;
+  margin-top: 30px;
+
+}
+
+/*Quiz*/
+
+.heart1 {
+	font-size: 25px;
+	color: white;
+	animation: beat1 .25s infinite alternate;
+	transform-origin: center;
+	background-color: red;
+	margin-left: 800px;
+	margin-right: 800px;
+	border-radius: 15px;
+}
+@keyframes beat1 {
+  /*from {background-color: red;transform: scale(1.4);}
+  to {background-color: blue;}*/
+       0%   {background: red;  transform: scale(1.4);}
+      33%  {background: green; }
+      66%  {background: blue;}
+      100% {background: red;}
+}
+
+/*debugging*/
+.heart2 {
+	font-size: 25px;
+	color: white;
+	animation: beat2 .25s infinite alternate;
+	transform-origin: center;
+	background-color: red;
+	margin-left: 800px;
+	margin-right: 800px;
+	border-radius: 20px;
+}
+@keyframes beat2 {
+  /*from {background-color: red;transform: scale(1.4);}
+  to {background-color: blue;}*/
+       0%   {background: #9933ff;  transform: scale(1.4);}
+      33%  {background: #4da6ff; }
+      66%  {background: #ffcc99;}
+      100% {background: #ffb3ff;}
+}
+/*ppt*/
+.heart3 {
+	font-size: 25px;
+	color: white;
+	animation: beat3 .25s infinite alternate;
+	transform-origin: center;
+	background-color: red;
+	margin-left: 800px;
+	margin-right: 800px;
+	border-radius: 20px;
+}
+@keyframes beat3 {
+  /*from {background-color: red;transform: scale(1.4);}
+  to {background-color: blue;}*/
+       0%   {background:#00ffbf;  transform: scale(1.4);}
+      33%  {background: #cccc00 }
+      66%  {background: #ffcc00;}
+      100% {background: #993300;}
+}
+/*poster presentation*/
+.heart4 {
+	font-size: 25px;
+	color: white;
+	animation: beat4 .25s infinite alternate;
+	transform-origin: center;
+	background-color: red;
+	margin-left: 800px;
+	margin-right: 800px;
+	border-radius: 20px;
+}
+@keyframes beat4 {
+  /*from {background-color: red;transform: scale(1.4);}
+  to {background-color: blue;}*/
+       0%   {background:sienna;  transform: scale(1.4);}
+      33%  {background:  green; }
+      66%  {background: palegreen;}
+      100% {background: khaki;}
+}
+/*web design*/
+.heart5 {
+	font-size: 25px;
+	color: white;
+	animation: beat5 .25s infinite alternate;
+	transform-origin: center;
+	background-color: red;
+	margin-left: 800px;
+	margin-right: 800px;
+	border-radius: 20px;
+}
+@keyframes beat5 {
+  /*from {background-color: red;transform: scale(1.4);}
+  to {background-color: blue;}*/
+       0%   {background: slateblue;  transform: scale(1.4);}
+      33%  {background: orchid; }
+      66%  {background: orangered;}
+      100% {background: gold;}
+}
+
+
+li {
+  display: inline;
+  padding-left:50px;
+  padding-right: 50px;
+  font-size: 25px;
+
+  
+
+}
+a{
+	text-decoration: none;
+border:1px solid green;
+color: black;
+padding: 10px;
+}
+a:hover {
+  background-color:mediumseagreen;
+  
+  text-decoration: none;
+}
+
+/* Style each tab content individually */
+#quiz {background-image: url(https://www.tradoc.fr/wp-content/uploads/sites/3058/2019/04/quiz-mgps.jpg); background-size: 1800px 900px; background-repeat: no-repeat; height: 70px; padding-top: 660px; color: red;}
+#debugging {background-image: url(https://media.geeksforgeeks.org/wp-content/uploads/20190902105053/Debugging-Tips-To-Get-Better-At-It.png); background-size: 1900px 900px; background-repeat: no-repeat; height: 130px; padding-left: 50px; padding-top: 600px; color: red;}
+#ppt {background-image: url(https://www.slidesalad.com/wp-content/uploads/2020/02/Premium-Business-Solutions-Multipurpose-PowerPoint-Presentation-Templates.jpg); background-size: 1800px 900px; background-repeat: no-repeat; height: 80px; padding-top: 650px; color: red;}
+#poster_presentation {background-image: url(http://bldeacet.ac.in/wp-content/uploads/2019/03/PosterPresentation.jpg); background-size: 1900px 900px; background-repeat: no-repeat; height: 130px; padding-top: 600px; color: red;}
+#webdesign {background-image: url(https://www.web-glaze.com/wp-content/uploads/2018/10/website-design-banner-tt-1.jpg); background-size: 1800px 900px; background-repeat: no-repeat; height: 130px; padding-top: 600px; color: red;}
+</style>
+<body>
+<div>
+	
+	<ul style="margin-left: 500px; margin-top: 60px;">
+		
+  <li><a href="#home">Home</a></li>
+  <li>  <a href="#news">Login</a></li>
+  <li><a href="#contact">Contact</a></li>
+  <li><a href="#about">About Us</a></li>
+</ul></div>
+
+<div id="quiz" class="tabcontent">
+ <div>
+  
+  <p class="heart1">Visit the page</p>
+</div>
+</div>
+<div id="debugging" class="tabcontent">
+  
+  <p class="heart2">Visit the page.</p>
+</div>
+
+<div id="ppt" class="tabcontent">
+  
+  <p class="heart3">Visit the page</p>
+</div>
+
+<div id="poster_presentation" class="tabcontent">
+  
+  <p class="heart4">Visit the page</p>
+</div>
+
+<div id="webdesign" class="tabcontent">
+  
+  <p class="heart5">Visit the page</p>
+</div>
+
+<button class="tablink" onclick="openCity('quiz', this, 'red')" id="defaultOpen">Quiz</button>
+<button class="tablink" onclick="openCity('debugging', this, 'dodgerblue')">Debugging</button>
+<button class="tablink" onclick="openCity('ppt', this, 'midnightblue')">PPT</button>
+<button class="tablink" onclick="openCity('poster_presentation', this, 'mediumseagreen')">Poster presentation</button>
+<button class="tablink" onclick="openCity('webdesign', this, 'hotpink')">Web design</button>
+</body>
+<script>
+	function openCity(cityName, elmnt, color) {
+  // Hide all elements with class="tabcontent" by default */
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+
+  // Remove the background color of all tablinks/buttons
+  tablinks = document.getElementsByClassName("tablink");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].style.backgroundColor = "";
+  }
+
+  // Show the specific tab content
+  document.getElementById(cityName).style.display = "block";
+
+  // Add the specific color to the button used to open the tab content
+  elmnt.style.backgroundColor = color;
+}
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script>
+</html>

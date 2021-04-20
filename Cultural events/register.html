@@ -1,0 +1,430 @@
+<?php
+// Include config file
+require_once "config.php";
+ 
+// Define variables and initialize with empty values
+$name = $rollno = $branch = $year = $collegename = $gender = "";
+$name_err = $rollno_err = $branch_err = $year_err = $collegename_err = $gender_err = "";
+ 
+// Processing form data when form is submitted
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+ 
+    // Validate username
+    if(empty(trim($_POST["name"]))){
+        $name_err = "Please enter a name.";
+    } else{
+        // Prepare a select statement
+        $sql = "SELECT id FROM users WHERE name = ?";
+        
+        if($stmt = mysqli_prepare($link, $sql)){
+            // Bind variables to the prepared statement as parameters
+            mysqli_stmt_bind_param($stmt, "s", $param_name);
+            
+            // Set parameters
+            $param_name = trim($_POST["name"]);
+            
+            // Attempt to execute the prepared statement
+            if(mysqli_stmt_execute($stmt)){
+                /* store result */
+                mysqli_stmt_store_result($stmt);
+                
+                    $name = trim($_POST["name"]);
+                
+            } 
+            else{
+                echo "Oops! Something went wrong. Please try again later.";
+            }
+
+            // Close statement
+            mysqli_stmt_close($stmt);
+        }
+    }
+    
+      // Validate rollno
+    if(empty(trim($_POST["rollno"]))){
+        $rollno_err = "Please enter a rollno.";
+    } else{
+        // Prepare a select statement
+        $sql = "SELECT id FROM users WHERE rollno = ?";
+        
+        if($stmt = mysqli_prepare($link, $sql)){
+            // Bind variables to the prepared statement as parameters
+            mysqli_stmt_bind_param($stmt, "s", $param_rollno);
+            
+            // Set parameters
+            $param_rollno = trim($_POST["rollno"]);
+            
+            // Attempt to execute the prepared statement
+            if(mysqli_stmt_execute($stmt)){
+                /* store result */
+                mysqli_stmt_store_result($stmt);
+                
+                    $rollno = trim($_POST["rollno"]);
+                
+            } 
+            else{
+                echo "Oops! Something went wrong. Please try again later.";
+            }
+
+            // Close statement
+            mysqli_stmt_close($stmt);
+        }
+    }
+    
+
+          // Validate branch
+    if(empty(trim($_POST["branch"]))){
+        $branch_err = "Please enter a branch.";
+    } else{
+        // Prepare a select statement
+        $sql = "SELECT id FROM users WHERE branch = ?";
+        
+        if($stmt = mysqli_prepare($link, $sql)){
+            // Bind variables to the prepared statement as parameters
+            mysqli_stmt_bind_param($stmt, "s", $param_branch);
+            
+            // Set parameters
+            $param_branch = trim($_POST["branch"]);
+            
+            // Attempt to execute the prepared statement
+            if(mysqli_stmt_execute($stmt)){
+                /* store result */
+                mysqli_stmt_store_result($stmt);
+                
+                    $branch = trim($_POST["branch"]);
+                
+            } 
+            else{
+                echo "Oops! Something went wrong. Please try again later.";
+            }
+
+            // Close statement
+            mysqli_stmt_close($stmt);
+        }
+    }
+            // Validate year
+    if(empty(trim($_POST["year"]))){
+        $year_err = "Please enter a year.";
+    } else{
+        // Prepare a select statement
+        $sql = "SELECT id FROM users WHERE year = ?";
+        
+        if($stmt = mysqli_prepare($link, $sql)){
+            // Bind variables to the prepared statement as parameters
+            mysqli_stmt_bind_param($stmt, "s", $param_year);
+            
+            // Set parameters
+            $param_year = trim($_POST["year"]);
+            
+            // Attempt to execute the prepared statement
+            if(mysqli_stmt_execute($stmt)){
+                /* store result */
+                mysqli_stmt_store_result($stmt);
+                
+                    $year = trim($_POST["year"]);
+                
+            } 
+            else{
+                echo "Oops! Something went wrong. Please try again later.";
+            }
+
+            // Close statement
+            mysqli_stmt_close($stmt);
+        }
+    }
+                // Validate college name
+    if(empty(trim($_POST["collegename"]))){
+        $collegename_err = "Please enter a collegename.";
+    } else{
+        // Prepare a select statement
+        $sql = "SELECT id FROM users WHERE collegename = ?";
+        
+        if($stmt = mysqli_prepare($link, $sql)){
+            // Bind variables to the prepared statement as parameters
+            mysqli_stmt_bind_param($stmt, "s", $param_collegename);
+            
+            // Set parameters
+            $param_collegename = trim($_POST["collegename"]);
+            
+            // Attempt to execute the prepared statement
+            if(mysqli_stmt_execute($stmt)){
+                /* store result */
+                mysqli_stmt_store_result($stmt);
+                
+                    $collegename = trim($_POST["collegename"]);
+                
+            } 
+            else{
+                echo "Oops! Something went wrong. Please try again later.";
+            }
+
+            // Close statement
+            mysqli_stmt_close($stmt);
+        }
+    }
+            // Validate gender
+    if(empty(trim($_POST["gender"]))){
+        $gender_err = "Please enter a gender.";
+    } else{
+        // Prepare a select statement
+        $sql = "SELECT id FROM users WHERE gender = ?";
+        
+        if($stmt = mysqli_prepare($link, $sql)){
+            // Bind variables to the prepared statement as parameters
+            mysqli_stmt_bind_param($stmt, "s", $param_gender);
+            
+            // Set parameters
+            $param_gender = trim($_POST["gender"]);
+            
+            // Attempt to execute the prepared statement
+            if(mysqli_stmt_execute($stmt)){
+                /* store result */
+                mysqli_stmt_store_result($stmt);
+                
+                    $gender = trim($_POST["gender"]);
+                
+            } 
+            else{
+                echo "Oops! Something went wrong. Please try again later.";
+            }
+
+             // Check input errors before inserting in database
+    if(empty($name_err) && empty($rollno_err) && empty($branch_err) && empty($year_err) && empty($collegename_err) && empty($gender_err)){
+        
+        // Prepare an insert statement
+        $sql = "INSERT INTO users (name, rollno, branch, year, collegename, gender) VALUES (?, ?, ?, ?, ?, ?)";
+         
+         if($stmt = mysqli_prepare($link, $sql)){
+            // Bind variables to the prepared statement as parameters
+            mysqli_stmt_bind_param($stmt, "sssiss", $param_name, $param_rollno, $param_branch, $param_year, $param_collegename, $param_gender );
+            
+            // Set parameters
+            $param_name = $name;
+            $param_rollno = $rollno;
+            $param_branch = $branch;
+            $param_year = $year;
+            $param_collegename = $collegename;
+            $param_gender  = $gender;
+             
+            
+            // Attempt to execute the prepared statement
+            if(mysqli_stmt_execute($stmt)){
+                // Redirect to login page
+                header("location: hi.html");
+            } 
+            else{
+                echo "Something went wrong. Please try again later.";
+            }
+        }
+    }
+
+            // Close statement
+            mysqli_stmt_close($stmt);
+        }
+    }
+
+    
+    // Close connection
+    mysqli_close($link);
+}
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+   <style>
+body{
+    padding: 0;
+    margin: 0;
+    font-family: sans-serif;
+    background-image: url(https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80);    
+}
+
+.container{
+    background-color: #fff;
+    width: 850px;
+    height: 500px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    box-shadow: 1px 1px 50px rgba(0,0,0,.2);
+}
+.container::before{
+    content: '';
+    width:350px;
+    height: 500px;
+    background-image: url(https://i.pinimg.com/736x/50/ac/96/50ac96d6074c898c1b27e9bf86d59329.jpg);
+    position: absolute; 
+} 
+.icon img{
+    position: absolute;
+    top: 20%;
+    left: 20%;
+    transform: translate(-50%,-50%);
+    width: 150px;
+    height: 100px;
+}
+
+.icon p1{
+    position: absolute;
+    top: 38%;
+    left: 20%;
+    transform: translate(-50%,-50%);
+    font-family: sans-serif;
+    color: #fff;
+}
+.icon p2{
+    position: absolute;
+    top: 55%;
+    left: 20%;
+    transform: translate(-50%,-50%);
+    font-family: sans-serif;
+    color: #fff;
+}
+.social{
+    position:absolute;
+    top: 70%;
+    left: 20%;
+    transform: translate(-50%,-50%);
+}
+.social img{
+    width: 50px;
+    height: 50px;
+    padding: 15px;
+    margin: 0 2px;
+    box-shadow: 1px 1px 5px rgba(0,0,0,.1);
+}
+.social img:hover{
+    transform: scale(1.2);
+    transition: .5s;
+}
+
+.forms{
+    position: absolute;
+    top: 54%;
+    left: 70%;
+    transform: translate(-50%,-50%);
+    width: 350px;
+    overflow: hidden;
+    
+}
+.forms input{
+    width: 100%;
+    height: 50px;
+    margin-bottom: 10px;
+    outline: none;
+    padding: 0 0 0 35px;
+    border: 1px solid rgba(0,0,0,0);
+    border-bottom-color:#fb007d;
+    background:transparent;
+}
+
+.forms i{
+    width: 20px;
+    position: absolute;
+    margin-top: 15px;    
+}
+.forms input[type="checkbox"]{
+    width: 20px;
+    margin: 16px 0 0 2px;
+    padding: 0;
+    border: 2px solid #5bb9ec;
+    width: 15px;
+    height: 15px;
+    -webkit-appearance:none;
+    background-color: #fff;
+    outline: none;
+    
+}
+input:checked[type="checkbox"]{
+    background-color: #fb007d;
+    border: none;
+   
+}
+.agree{
+    float: right;
+    margin-right: 125px;
+    font-size: 15px;
+    
+}
+.forms input[type="submit"]{
+    width: 100%;
+    border: none;
+    background-color: #fb007d;
+    color: #fff;
+    cursor: pointer;
+    padding: 0;
+ }
+</style>
+</head>
+<body>
+      <div class="container">
+        <div class="icon">
+            <img src="https://www.pngkey.com/png/full/362-3625855_2nd-international-conference-on-member-of-computer-society.png" alt="">
+            <p1 style="color:#ff3399; font-size:150%; font-family:Comic Sans MS">ASTRA</p1>
+<p2 style="color:#ff6666; font-size:150%; font-family:Cursive">Follow us on</p2>
+        </div>
+        <div class="social">
+            <a href="https://www.facebook.com/RRR-100811144898068/" target="_blank">
+            <img src="https://i.pinimg.com/originals/58/f4/72/58f4723d8f23906bdcb058604075ad2a.png" alt="" href="https://www.facebook.com/RRR-100811144898068/">
+           </a>
+            <a href="https://www.facebook.com/RRR-100811144898068/" target="_blank">
+            <img src="https://i.pinimg.com/originals/13/da/a6/13daa6e5810e2d9a6da7c6fc873ae67f.png" alt="">
+          </a>
+            <a href="https://www.facebook.com/RRR-100811144898068/" target="_blank"> 
+            <img src="https://localhop-prod.s3.amazonaws.com/uploads/ac6cfcf05e4f55f6d61ec85e29dcc6b7_Twitter%20101.png"alt="">
+          </a>
+        </div>
+    <div class="wrapper">
+        
+          
+            <div class="forms">
+                
+            <div class="form-group <?php echo (!empty($name_err)) ? 'has-error' : ''; ?>">
+               <i class="far fa-user"></i>
+                <input type="text" name="name" placeholder="Name"  >
+                <span class="help-block"><?php echo $name_err; ?></span>
+            </div> 
+
+            <div class="form-group <?php echo (!empty($rollno_err)) ? 'has-error' : ''; ?>">
+                <i class="far fa-address-book"></i>
+                <input type="text" name="rollno" placeholder="Rollno"  >
+                <span class="help-block"><?php echo $rollno_err; ?></span>
+            </div>
+                
+            <div class="form-group <?php echo (!empty($branch_err)) ? 'has-error' : ''; ?>">
+                <i class="fas fa-building"></i>
+                <input type="text" name="branch" placeholder="Branch" >
+                <span class="help-block"><?php echo $branch_err; ?></span>
+            </div>
+
+            <div class="form-group <?php echo (!empty($year_err)) ? 'has-error' : ''; ?>">
+                <i class="fas fa-mobile"></i>
+                <input type="text" name="year" placeholder="Phone number"  >
+                <span class="help-block"><?php echo $year_err; ?></span>
+            </div>
+
+            <div class="form-group <?php echo (!empty($collegename_err)) ? 'has-error' : ''; ?>">
+                <i class="fas fa-university"></i>
+                <input type="text" name="collegename" placeholder="Collegename"  >
+                <span class="help-block"><?php echo $collegename_err; ?></span>
+            </div>
+
+            <div class="form-group <?php echo (!empty($gender_err)) ? 'has-error' : ''; ?>">
+                <i class="fas fa-donate"></i>
+                <input type="text" name="gender" placeholder="Gender"  >
+                <span class="help-block"><?php echo $gender_err; ?></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary" value="Submit">
+                
+            </div>
+        </div>
+           
+        </form>
+    </div>   
+    <script src="https://kit.fontawesome.com/dc4f104b17.js" crossorigin="anonymous"></script> 
+</body>
+</html>
